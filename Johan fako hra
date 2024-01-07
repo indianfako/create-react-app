@@ -1,0 +1,109 @@
+import java.util.Scanner;
+
+public class Sibenice {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int trest = 0; // počet trestných bodů
+        int vyhra = 0; // počet uhodnutých písmen
+        String slovo = "emanuel"; // hledané slovo
+        char[] postup = new char[slovo.length()]; // pole pro postup hry
+        for (int i = 0; i != slovo.length(); i++) {
+            postup[i] = '-'; // naplníme pole pomlčkami
+        }
+        while (trest != 7 && vyhra != slovo.length()) { // hlavní cyklus hry
+            for (char c : postup) {
+                System.out.printf("%c", c); // vypíšeme postup
+            }
+            System.out.printf("\nZadejte písmeno: ");
+            String volba = sc.nextLine(); // načteme volbu uživatele
+            volba = volba.toLowerCase(); // převedeme na malé písmeno
+            if (slovo.contains(volba)) { // pokud je písmeno ve slově
+                for (int i = 0; i != slovo.length(); i++) {
+                    if (volba.equals(Character.toString(slovo.charAt(i))) && postup[i] != slovo.charAt(i)) {
+                        postup[i] = slovo.charAt(i); // zapíšeme písmeno na postup
+                        vyhra += 1; // zvýšíme počet uhodnutých písmen
+                    }
+                }
+            } else {
+                trest += 1; // zvýšíme počet trestných bodů
+            }
+            switch (trest) { // vykreslíme šibenici podle počtu trestných bodů
+                case 7:
+                    System.out.println(" ___________\n"
+                            + " ││ I\n"
+                            + " ││ ( )\n"
+                            + " ││ │\n"
+                            + " ││ /│\\\n"
+                            + " ││ │\n"
+                            + " ││ / \\\n"
+                            + ".---.\n"
+                            + "/ \\");
+                    System.out.println("Prohrál jste!\n"
+                            + "Hledané slovo bylo: " + slovo);
+                    break;
+                case 6:
+                    System.out.println(" ___________\n"
+                            + " ││ I\n"
+                            + " ││ ( )\n"
+                            + " ││ │\n"
+                            + " ││ │\n"
+                            + " ││ │\n"
+                            + " ││ / \\\n"
+                            + ".---.\n"
+                            + "/ \\");
+                    break;
+                case 5:
+                    System.out.println(" ___________\n"
+                            + " ││ I\n"
+                            + " ││ ( )\n"
+                            + " ││ │\n"
+                            + " ││ │\n"
+                            + " ││ │\n"
+                            + " ││\n"
+                            + ".---.\n"
+                            + "/ \\");
+                    break;
+                case 4:
+                    System.out.println(" ___________\n"
+                            + " ││ I\n"
+                            + " ││ ( )\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + ".---.\n"
+                            + "/ \\");
+                    break;
+                case 3:
+                    System.out.println(" ___________\n"
+                            + " ││ I\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + ".---.\n"
+                            + "/ \\");
+                    break;
+                case 2:
+                    System.out.println("\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + " ││\n"
+                            + ".---.\n"
+                            + "/ \\");
+                    break;
+                case 1:
+                    System.out.println("\n\n\n\n\n\n\n"
+                            + ".---.\n"
+                            + "/ \\");
+                    break;
+                default:
+            }
+        }
+    }
+}
