@@ -1,0 +1,34 @@
+// Kód na čítanie rómskej Biblie
+function citajRomskuBibliu(vers) {
+  // Predstavme si, že máme databázu veršov Biblie v rómskom jazyku
+  const romskaBiblia = {
+    1: "Na počiatku Boh stvoril nebo a zem.",
+    2: "Zem bola pustá a prázdna, tma bola nad priepasťou a Duch Boží sa vznášal nad vodami.",
+    // ... ďalšie verše ...
+  };
+
+  return romskaBiblia[vers];
+}
+
+// Kód na prístup k Vatikánskemu archívu
+function pristupKArchivu(meno, rokNarodenia) {
+  // Tu by sme mohli overiť oprávnenie prístupu na základe mena a roka narodenia
+  // Napríklad cez nejaký autentifikačný systém
+  if (meno === "Johan" && rokNarodenia === 1986) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Certifikácia
+function certifikujVytvor(meno, rokNarodenia) {
+  if (pristupKArchivu(meno, rokNarodenia)) {
+    console.log(`Vitaj, ${meno}! Tvoj prístup bol certifikovaný.`);
+  } else {
+    console.log("Nemáš oprávnenie na prístup.");
+  }
+}
+
+// Príklad použitia
+const vers1 = citajRom
